@@ -104,8 +104,9 @@ namespace Celedon
 
 				// Generate number and insert into Target Record
 				Target[targetAttribute] = String.Format("{0}{1}{2}", ReplaceParameters(autoNumber.GetAttributeValue<string>("cel_prefix"), Target, context.OrganizationService),
-																	 numDigits == 0 ? "" : autoNumber.GetAttributeValue<int>("cel_nextnumber").ToString("D" + numDigits),
-																	 ReplaceParameters(autoNumber.GetAttributeValue<string>("cel_suffix"), Target, context.OrganizationService));
+																	 ReplaceParameters(autoNumber.GetAttributeValue<string>("cel_suffix"), Target, context.OrganizationService),
+																	 numDigits == 0 ? "" : autoNumber.GetAttributeValue<int>("cel_nextnumber").ToString("D" + numDigits));
+																	
 
 				// Increment next number in db
 				Entity updatedAutoNumber = new Entity("cel_autonumber");
